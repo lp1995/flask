@@ -1,6 +1,10 @@
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from flask import Flask ,render_template,request
+from sqlalchemy import *
+from sqlalchemy.orm import *
 app = Flask(__name__)
+
+engin = create_engine(r'sqlite:/')
 
 class RegistrationForm(Form):
     username = TextField('Username', [validators.Length(min=4, max=25)])
