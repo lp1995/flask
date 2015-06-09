@@ -1,0 +1,31 @@
+<html>
+<link rel="stylesheet" type="text/css" href="1.css" />
+{% macro render_field(field) %}
+  <dt class="te">{{ field.label}}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+<style>
+.te{
+	color: gray; 
+}
+</style>
+
+<form method=post action="/register">
+  <dl class="cs">
+    {{ render_field(form.username)}}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p class="cs"><input type=submit value=Register>
+</form>
+</html>
