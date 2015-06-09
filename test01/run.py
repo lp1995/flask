@@ -1,5 +1,7 @@
+#coding:utf8
 from sqlalchemy import *
 from sqlalchemy.orm import *
+
 
 '''
 --------
